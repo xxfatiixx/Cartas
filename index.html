@@ -3,12 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CARTAS</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>CARTAS PARA TI</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f3f3;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .intro {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .intro h1 {
+      color: #d23669;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .carta {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: none;
+    }
+    .sobre {
+      width: 100px;
+      height: auto;
+      margin: 10px;
+      transition: transform 0.3s;
+    }
+    .sobre:hover {
+      transform: scale(1.1);
+    }
+    #menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    #cerrarCarta {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #d23669;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1 style="text-align: center; text-transform: uppercase;">Cartas</h1>
-  <ul id="menu" style="list-style-type: none; padding: 0; display: flex; justify-content: center;">
+  <div class="intro">
+    <h1>PARA EL AMOR DE MI VIDA</h1>
+    <p>Hola mi niño,</p>
+    <p>Recuerdo que me dijiste que nunca te habían hecho caritas, o algún detalle referente a programación, y como soy alguien que toma como hobbie escribir y programar, quise hacer esto para ti.</p>
+    <p>Hoy cumplimos dos meses, y honestamente cada día te amo más, ahora ya no son solo llamadas, son videollamadas diariamente, donde hacemos todo juntos, desde que nos despertamos, hasta que nos vamos a dormir. Así mismo, tengo entendido que sueles tener días no muy buenos, por eso también preparé esto.</p>
+  </div>
+
+  <h1 style="text-align: center; text-transform: uppercase; color: #d23669;">Cartas para ti</h1>
+  
+  <ul id="menu" style="list-style-type: none; padding: 0;">
     <li><a href="#" onclick="mostrarContenido('carta1')" data-carta="carta1"><img src="cuando estés triste.jpg" alt="Cuando estés triste" class="sobre"></a></li>
     <li><a href="#" onclick="mostrarContenido('carta2')" data-carta="carta2"><img src="cuando estés feliz.jpg" alt="Cuando estés feliz" class="sobre"></a></li>
     <li><a href="#" onclick="mostrarContenido('carta3')" data-carta="carta3"><img src="cuando me extrañes.jpg" alt="Cuando me extrañes" class="sobre"></a></li>
@@ -16,10 +79,9 @@
     <li><a href="#" onclick="mostrarContenido('carta5')" data-carta="carta5"><img src="cuando estés estresado.jpg" alt="Cuando estés estresado" class="sobre"></a></li>
     <li><a href="#" onclick="mostrarContenido('carta6')" data-carta="carta6"><img src="cuando sientas que no puedes.jpg" alt="Cuando sientas que no puedes" class="sobre"></a></li>
     <li><a href="#" onclick="mostrarContenido('carta7')" data-carta="carta7"><img src="solo porque te amo.jpg" alt="Solo porque te amo" class="sobre"></a></li>
-    <a id="pdfContainer" href="#" style="display: none;">Descargar PDF</a>
-</ul>
+  </ul>
 
-<div id="carta1" class="carta" style="display: none;">
+  <div id="carta1" class="carta" style="display: none;">
     <div class="contenido-carta">
       <h2>Cuando estés triste</h2>
         <p>Hola, mi amor lindo, si estás leyendo esto, porque hay algo en tu corazoncito que no te deja sonreír así como siempre lo haces. 
@@ -101,8 +163,24 @@
       </div>
     </div>
     
-  <button id="cerrarCarta" style="display: none;">Cerrar carta</button>
+ <button id="cerrarCarta" style="display: none;">Cerrar carta</button>
   
-  <script src="script.js"></script>
+  <script>
+    function mostrarContenido(id) {
+      document.querySelectorAll('.carta').forEach(carta => {
+        carta.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+      document.getElementById('cerrarCarta').style.display = 'block';
+      window.scrollTo(0, document.getElementById(id).offsetTop);
+    }
+
+    document.getElementById('cerrarCarta').addEventListener('click', function() {
+      document.querySelectorAll('.carta').forEach(carta => {
+        carta.style.display = 'none';
+      });
+      this.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
